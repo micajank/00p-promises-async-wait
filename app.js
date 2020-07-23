@@ -84,24 +84,24 @@ class GithubProfile {
     }
 }
 // https://api/github.com/users/micajank
-fetch('https://api.github.com/users/micajank')
-.then(response => {
-    return response.json();
-})
-.then(data => {
-    // console.log(data);
-    let githubURL = data.url;
-    // console.log(githubURL)
-    let githubUserName = data.login;
-    // console.log(githubUserName)
-    let githubName = data.name;
-    // console.log(githubName)
+// fetch('https://api.github.com/users/micajank')
+// .then(response => {
+//     return response.json();
+// })
+// .then(data => {
+//     // console.log(data);
+//     let githubURL = data.url;
+//     // console.log(githubURL)
+//     let githubUserName = data.login;
+//     // console.log(githubUserName)
+//     let githubName = data.name;
+//     // console.log(githubName)
 
-    let mac = new GithubProfile(githubUserName, githubName, githubURL);
-    console.log(mac);
+//     let mac = new GithubProfile(githubUserName, githubName, githubURL);
+//     console.log(mac);
 
-    mac.intro();
-})
+//     mac.intro();
+// })
 
 
 // Promises
@@ -126,20 +126,35 @@ var isMomHappy = true;
 // console.log(willGetNewPhone)
 
 
-let willIGetNewOhone = new Promise((resolve, reject) => {
-    if (isMomHappy) {
-        const phone = {
-            breand: 'iPhone',
-            color: 'pink'
-        }
-        resolve(phone);
-    }
-    else {
-        reject('No phone for you little boiiiii');
-    }
-})
+// let willIGetNewOhone = new Promise((resolve, reject) => {
+//     if (isMomHappy) {
+//         const phone = {
+//             breand: 'iPhone',
+//             color: 'pink'
+//         }
+//         resolve(phone);
+//     }
+//     else {
+//         reject('No phone for you little boiiiii');
+//     }
+// })
 
 
-willIGetNewPhone.then(result => {
-    console.log(result);
-}) 
+// willIGetNewPhone.then(result => {
+//     console.log(result);
+// }) 
+
+
+// Async / Await
+async function printUsers() {
+    const endpoint = 'https://api.github.com/users/micajank';
+    let mac = await fetch(endpoint).then(res => res.json());
+    console.log(mac);
+}
+printUsers();
+
+//   this is the same as above
+//   fetch(endpoint)
+//   .then(responnse => {
+//       return response.json();
+//   });
